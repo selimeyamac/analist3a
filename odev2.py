@@ -2,28 +2,18 @@
 
 # 4 Kullanıcıdan girilen sayının asal sayı olup olmadığını söyleyen bir program yazınız.
 
-def asalSayi(num):
-    if num <= 1:
-        return False
-    elif num <= 3:
-        return True
-    elif num % 2 == 0 or num % 3 == 0:
-        return False
-    i = 5
-    while i * i <= num:
-        if num % i == 0 or num % (i + 2) == 0:
-            return False
-        i += 6
-    return True
+sayi=int(input("Sayıyı Girin : "))
+if sayi > 1:
 
-try:
-    num = int(input("Lutfen bir sayi girin: "))
-    if asalSayi(num):
-        print(num, "bir asal sayidir.")
-    else:
-        print(num, "bir asal sayi değildir.")
-except ValueError:
-    print("Lütfen geçerli bir sayi girin!")
+   for i in range(2,sayi):
+       if (sayi % i) == 0:
+           print(sayi," Asal Sayı Değildir.")
+           break
+   else:
+       print(sayi," Asal Sayıdır.")
+ 
+else:
+   print(sayi," Asal Sayı Değildir.")
 
 
 #3- Kullanıcıdan girilen sayının EBOB ve EKOK'unu bulan programı yazınız.
@@ -64,3 +54,17 @@ if(sayi == toplam):
     print("Mükemmel Sayidir.")
 else:
     print("Mükemmel Sayi Degildir")
+
+#5- Kullanıcıdan girilen sayının asal çarpanlarını bulan bir program yazınız. 
+def asal_carpanlara_ayir(sayi):
+    asal_carpanlar = []
+    bolen = 2
+    while sayi > 1:
+        while sayi % bolen == 0:
+            asal_carpanlar.append(bolen)
+            sayi //= bolen
+        bolen += 1
+    return asal_carpanlar
+girilen_sayi = int(input("Lütfen asal çarpanlarına ayırmak istediğiniz sayıyı giriniz: "))
+asal_carpanlar = asal_carpanlara_ayir(girilen_sayi)
+print("Asal Çarpanlar:", asal_carpanlar)
